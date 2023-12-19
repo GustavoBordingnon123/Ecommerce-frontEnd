@@ -12,7 +12,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
 }, ref) => {
     return(
         <button
-            ref={ref}
             className={cn(
                 `
                     w-auto rounded-full bg-black border-transparent px-5 py-3 disabled:cursosr-not-allowed 
@@ -20,6 +19,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
                 `,
                 className
             )}
+            ref={ref}
+            {...props}
         >
             {children}
         </button>
