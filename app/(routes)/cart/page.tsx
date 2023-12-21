@@ -7,7 +7,7 @@ import CartItem from "./components/cartItem";
 import Summary from "./components/summary";
 import useCart from "@/hooks/useCart";
 
-const cartPage = () => {
+const CartPage = () => {
 
     const cart = useCart();
 
@@ -48,4 +48,4 @@ const cartPage = () => {
     )   
 }
 
-export default cartPage;
+export default CartPage;
