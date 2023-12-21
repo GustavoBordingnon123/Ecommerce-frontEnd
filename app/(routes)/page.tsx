@@ -9,6 +9,7 @@ import ProductList from "@/components/productList";
 const HomePage = async() => {
 
     const products = await getProducts({isFeatured: true});
+    
     const billboard = await getBillboard("4fe16b35-9343-4b04-8b52-0d4a8121aeb3");
 
     return(
