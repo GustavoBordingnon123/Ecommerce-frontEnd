@@ -7,6 +7,9 @@ import CartItem from "./components/cartItem";
 import Summary from "./components/summary";
 import useCart from "@/hooks/useCart";
 
+export const revalidate = 0;
+
+
 const CartPage = () => {
 
     const cart = useCart();
