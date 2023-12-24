@@ -1,5 +1,4 @@
 import GetCategories from "@/actions/getCategories";
-import GetCategory from "@/actions/getCategories";
 import Container from "@/components/ui/container";
 import MainNav from "@/components/ui/mainNav";
 import NavBarActions from "@/components/navBarActions";

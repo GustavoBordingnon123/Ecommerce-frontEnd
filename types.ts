@@ -16,8 +16,8 @@ export interface Product {
     name:string;
     price:string;
     isFeatured:boolean;
-    size:Size;
-    color:Color;
+    author:Author;
+    publisher:Publisher;
     images: Image[];
 }
 
@@ -26,13 +26,13 @@ export interface Image{
     url:string;
 }
 
-export interface Size{
+export interface Author{
     id:string;
     name:string;
     value:string;
 }
 
-export interface Color{
+export interface Publisher{
     id:string;
     name:string;
     value:string;
