@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import { Color, Size } from '@/types';
+import { Author, Publisher } from '@/types';
 import Button from '@/components/ui/Button';
 import { Plus, X } from 'lucide-react';
 import { Dialog } from '@headlessui/react';
@@ -9,12 +9,12 @@ import IconButton from '@/components/ui/iconButton';
 import Filter from './filter';
 
 interface MobileFiltersProps {
-    sizes: Size[];
-    colors: Color[];
+    authors: Author[];
+    publishers: Publisher[];
 }
 
 
-const MobileFilters:React.FC<MobileFiltersProps> = ({ sizes,colors }) => {
+const MobileFilters:React.FC<MobileFiltersProps> = ({ authors,publishers }) => {
 
     const [open,setOpen] = React.useState(false);
     
@@ -41,14 +41,14 @@ const MobileFilters:React.FC<MobileFiltersProps> = ({ sizes,colors }) => {
 
                             <div className='p-4'>
                                 <Filter
-                                    valueKey="sizeId"
-                                    name="Sizes"
-                                    data={sizes}
+                                    valueKey="authorId"
+                                    name="Authors"
+                                    data={authors}
                                 />
                                 <Filter 
-                                    valueKey="colorId"
-                                    name="Colors"
-                                    data={colors}
+                                    valueKey="publisherId"
+                                    name="Publishers"
+                                    data={publishers}
                                 />
                             </div>
 
