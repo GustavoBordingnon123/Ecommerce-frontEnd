@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import { Color, Size } from '@/types';
+import { Author, Publisher } from '@/types';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 
 
 interface FilterProps {
-    data: (Size | Color)[];
+    data: (Publisher | Author)[];
     name: string;
     valueKey: string;
 }
