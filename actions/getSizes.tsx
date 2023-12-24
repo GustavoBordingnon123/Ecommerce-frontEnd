@@ -1,9 +1,9 @@
 import React from 'react';
-import { Size } from '@/types';
+import { Publisher } from '@/types';
 
-const url = `${process.env.NEXT_PUBLIC_API_URL}/sizes`;
+const url = `${process.env.NEXT_PUBLIC_API_URL}/publishers`;
 
-const getSizes = async(): Promise<Size[]> => {
+const getPublishers = async(): Promise<Publisher[]> => {
 
     const res = await fetch(url);
 
@@ -11,4 +11,4 @@ const getSizes = async(): Promise<Size[]> => {
 
 }
 
-export default getSizes;
+export default getPublishers;

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Color} from '@/types';
+import { Author} from '@/types';
 
-const url = `${process.env.NEXT_PUBLIC_API_URL}/colors`;
+const url = `${process.env.NEXT_PUBLIC_API_URL}/authors`;
 
-const getColors = async(): Promise<Color[]> => {
+const getAuthors = async(): Promise<Author[]> => {
 
     const res = await fetch(url);
 
@@ -11,4 +11,4 @@ const getColors = async(): Promise<Color[]> => {
 
 }
 
-export default getColors;
+export default getAuthors;
