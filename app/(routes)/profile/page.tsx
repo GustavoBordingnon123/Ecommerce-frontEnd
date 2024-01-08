@@ -21,7 +21,7 @@ const ProfilePage = () => {
 
     const [isMounted, setIsMounted] = useState(false);
 
-    const userData = localStorage.getItem('user');
+    const userData = typeof window !== 'undefined' ? localStorage.getItem('user') : null;
 
     const [userId, setUserId] = useState("");
     const [email, setEmail] = useState('');

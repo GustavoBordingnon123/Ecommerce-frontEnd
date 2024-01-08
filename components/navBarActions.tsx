@@ -11,6 +11,8 @@ const NavBarActions = () => {
   const router = useRouter();
   const cart = useCart();
   const removeAll = useCart((state) => state.removeAll);
+  
+  const userData = typeof window !== 'undefined' ? localStorage.getItem('user') : null; 
 
   const [user, setUser] = useState("Faça seu login ou cadastre-se!");
   const [isMounted, setIsMounted] = useState(false);
@@ -24,13 +26,12 @@ const NavBarActions = () => {
       const user = JSON.parse(userData);
       setUser(`Olá, ${user.name}`);
     }
-  }, [localStorage.getItem('user')]);
+  }, [userData]);
 
   if (!isMounted) {
     return null;
   }
 
-  const userData = localStorage.getItem('user'); // Declare userData here
 
   const goToProfile = () => {
     if (userData) {
