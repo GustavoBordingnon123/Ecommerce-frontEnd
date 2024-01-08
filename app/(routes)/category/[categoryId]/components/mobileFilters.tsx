@@ -11,10 +11,11 @@ import Filter from './filter';
 interface MobileFiltersProps {
     authors: Author[];
     publishers: Publisher[];
+    category?: string;
 }
 
 
-const MobileFilters:React.FC<MobileFiltersProps> = ({ authors,publishers }) => {
+const MobileFilters:React.FC<MobileFiltersProps> = ({ authors,publishers, category }) => {
 
     const [open,setOpen] = React.useState(false);
     
@@ -44,11 +45,13 @@ const MobileFilters:React.FC<MobileFiltersProps> = ({ authors,publishers }) => {
                                     valueKey="authorId"
                                     name="Authors"
                                     data={authors}
+                                    category={category}
                                 />
                                 <Filter 
                                     valueKey="publisherId"
                                     name="Publishers"
                                     data={publishers}
+                                    category={category}
                                 />
                             </div>
 
