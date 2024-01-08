@@ -27,7 +27,7 @@ const CartItem:React.FC<CartItemProps> = ({ data }) => {
                     src={data?.images?.[0].url}
                     fill
                     alt="image"
-                    className="object-cover object-center" 
+                    className="object-contain object-center" 
                 />
             </div>
 
@@ -45,10 +45,10 @@ const CartItem:React.FC<CartItemProps> = ({ data }) => {
                     </div>
 
                     <div className="mt-1 flex text-sm">
-                        <p className="text-gray-500">
+                        <p className="text-gray-500 max-w-[80px]">
                             {data.author.name}
                         </p>
-                        <p className="text-gray-500 ml-4 border-l border-gray-200 pl-4">
+                        <p className="text-gray-500 ml-4 border-l border-gray-200 pl-4 max-w-[80px]">
                             {data.publisher.name}
                         </p>
                     </div>

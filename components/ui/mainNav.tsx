@@ -29,8 +29,8 @@ const MainNav:React.FC<MainNavProps> = ({data}) => {
                     key={route.href}
                     href={route.href}
                     className={cn(
-                        'text-sm font-medium trasition-colors hover:text-black',
-                        route.active ? 'text-black' : 'text-neutral-500',
+                        'text-sm font-medium trasition-colors hover:text-black ',
+                        route.active ? 'text-white' : 'text-neutral-300',
                     )}
                 >
                     {route.label}

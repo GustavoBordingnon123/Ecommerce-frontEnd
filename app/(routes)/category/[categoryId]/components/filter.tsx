@@ -14,35 +14,38 @@ interface FilterProps {
     data: (Publisher | Author)[];
     name: string;
     valueKey: string;
+    category?: string;
 }
 
 const Filter: React.FC<FilterProps> = ({
- data,name,valueKey
+ data,name,valueKey,category
 }) => {
+
+    const filteredData = category ? data.filter(filter => filter.value === category) : data;
 
     const searchParams = useSearchParams();
     const router = useRouter();
-
+  
     const selectedValue = searchParams.get(valueKey);
-
-    const onClick = (id:string) => {
-        const current = qs.parse(searchParams.toString());
-
-        const query = {
-            ...current,
-            [valueKey]: id
-        };
-
-        if(current[valueKey] === id){
-           query[valueKey] = null;
-        }
-
-        const url = qs.stringifyUrl({
-            url: window.location.href,
-            query
-        },{skipNull: true});
-
-        router.push(url);
+  
+    const onClick = (id: string) => {
+      const current = qs.parse(searchParams.toString());
+  
+      const query = {
+        ...current,
+        [valueKey]: id
+      };
+  
+      if (current[valueKey] === id) {
+        query[valueKey] = null;
+      }
+  
+      const url = qs.stringifyUrl({
+        url: window.location.href,
+        query
+      }, { skipNull: true });
+  
+      router.push(url);
     }
 
     return (
@@ -54,14 +57,14 @@ const Filter: React.FC<FilterProps> = ({
             <hr className='my-4' />
 
             <div className='flex flex-wrap gap-2'>
-                {data.map((filter) => (
+                {filteredData.map((filter) => (
                     <div key={filter.id} className='flex items-center'>
-                        <Button 
-                            className={cn('rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300',
+                        <Button
+                        className={cn('rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300',
                             selectedValue === filter.id && 'bg-black text-white')}
-                            onClick={() => onClick(filter.id)}
+                        onClick={() => onClick(filter.id)}
                         >
-                            {filter.name}
+                        {filter.name}
                         </Button>
                     </div>
                 ))}

@@ -9,6 +9,8 @@ interface Query {
     authorId?: string;
     publisherId?: string;
     isFeatured?: boolean;
+    price?: number;
+    count?: number;
 }
 
 const getProducts = async(query:Query): Promise<Product[]> => {
@@ -18,8 +20,10 @@ const getProducts = async(query:Query): Promise<Product[]> => {
         query:{
             categoryId: query.categoryId,
             authorId: query.authorId,
+            price: query.price,
             publisherId: query.publisherId,
-            isFeatured: query.isFeatured
+            isFeatured: query.isFeatured,
+            count: query.count,
         }
     })
 

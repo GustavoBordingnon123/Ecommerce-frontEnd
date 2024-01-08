@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { MouseEventHandler } from "react";
 import usePreviewModal from "@/hooks/usePreviewModal";
 import useCart from "@/hooks/useCart";
+import { toast } from "react-hot-toast";
 
 interface ProductCard{
     data: Product;
@@ -35,7 +36,34 @@ const ProductCard: React.FC<ProductCard> = ({data}) => {
     const onAddToCart:MouseEventHandler<HTMLButtonElement> = (e) => {
         e.stopPropagation();
 
-        cart.addItem(data);
+        const userData = localStorage.getItem('user');
+        if (userData) {
+            cart.addItem(data); 
+        } else {
+            toast((t) => (
+                <span className="flex flex-col justify-center items-center gap-1">
+                    <span>Para comprar voçê precisar estar logado!<br /></span>
+                    <span>Deseja <b>Logar?</b></span>
+                    <div className="flex items-center justify-center gap-x-5">
+    
+                        <button
+                            onClick={() => {router.push("/login"); toast.dismiss(t.id)}}
+                            className="text-green-600"
+                        >
+                            Sim
+                        </button>
+                        <button
+                            onClick={() => toast.dismiss(t.id)}
+                            className="text-red-600"
+                        >
+                            Não
+                        </button>
+    
+                    </div>
+    
+                </span>
+            ));
+        }
     }
 
     return(

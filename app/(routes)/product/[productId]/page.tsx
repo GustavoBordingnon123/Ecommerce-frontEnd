@@ -16,7 +16,7 @@ export const revalidate = 0;
 const ProductPage:React.FC<ProductPageProps> = async({params}) =>{
     
     const product = await getProduct(params.productId);
-    const suggestedProducts = await getProducts({categoryId: product?.category?.id});
+    const suggestedProducts = await getProducts({categoryId: product?.category?.id, count: 4});
 
     return(
         <div className="bg-white">
@@ -36,7 +36,7 @@ const ProductPage:React.FC<ProductPageProps> = async({params}) =>{
 
                     <hr className="my-10" />
 
-                    <ProductList title="Related Items" items={suggestedProducts} />
+                    <ProductList title="Talvez voçê goste também" items={suggestedProducts} />
 
                 </div>
             </Container>

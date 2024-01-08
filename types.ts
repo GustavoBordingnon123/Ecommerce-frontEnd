@@ -19,6 +19,7 @@ export interface Product {
     author:Author;
     publisher:Publisher;
     images: Image[];
+    description:string;
 }
 
 export interface Image{
@@ -36,4 +37,13 @@ export interface Publisher{
     id:string;
     name:string;
     value:string;
+}
+
+
+export interface User{
+    email: String;
+    password: String;
+    name: String;
+    cpf: String;
+    phone: String;
 }

@@ -51,11 +51,13 @@ const CategoryPage: React.FC<CategoryPageProps> = async({params, searchParams}) 
                                 valueKey="publisherId"
                                 name="Publishers"
                                 data={publishers}
+                                category={category.name}
                             />
                               <Filter 
                                 valueKey="authorId"
                                 name="Authors"
                                 data={authors}
+                                category={category.name}
                             />
                         </div>
 
