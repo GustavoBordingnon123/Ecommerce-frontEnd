@@ -10,13 +10,15 @@ import { toast } from "react-hot-toast";
 import axios, { AxiosError } from "axios";
 
 import createUser from "@/actions/createUser";
+import useSign from "@/hooks/useSign";
 
 export const revalidate = 0;
 
-const RegisterPage = () => {
+const SignUp = () => {
 
     const router = useRouter();
     const [isMounted, setIsMounted] = useState(false);
+    const isMobile = window.innerWidth <= 768; // Defina o breakpoint para dispositivos móveis
 
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
@@ -32,6 +34,11 @@ const RegisterPage = () => {
     const [errorPhone, setErrorPhone] = useState("");
     const [errorConfirmarSenha, setErrorConfirmarSenha] = useState("");
 
+    const { isSignUp, toggleSign } = useSign();
+
+    const handleButtonClick = () => {
+        toggleSign();
+    };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, setState: React.Dispatch<React.SetStateAction<string>>) => {
         setState(e.target.value);
@@ -106,7 +113,7 @@ const RegisterPage = () => {
       
           if (response.status === 200) {
             toast.success('Usuário foi criado com sucesso');
-            router.push('/login');
+            router.push('/sign');
           } else {
             switch (response.status) {
               case 400:
@@ -158,67 +165,63 @@ const RegisterPage = () => {
         return null;
     }
 
+
     return(
         <div className="h-full w-full">
-            <form className="flex flex-col gap-y-5 mt-2">
+            <form className="flex flex-col items-center justify-center h-full w-full overflow-y-scroll">
                 
                 <h1 className="uppercase font-bold text-3xl">Crie sua conta</h1>
                 <span className='text-sm'>ou use seu email para registrar</span>
 
-                <div className="flex flex-col gap-y-5 mt-2">
+                <div className="flex justify-center items-center flex-col gap-y-5 mt-2">
 
                     <div>
-                        <Input icon={<User size={20} />} label="Email:" placeholder="digite seu email" onChange={(e) => handleInputChange(e, setEmail)}/>
+                        <Input icon={<User size={20} />} placeholder="digite seu email" onChange={(e) => handleInputChange(e, setEmail)}/>
                         <p className="text-sm text-red-500 font-bold max-w-[300px]">{errorEmail}</p>
                     </div>
 
                     <div>
-                        <Input icon={<PersonStanding size={20} />} label="Nome:" placeholder="digite seu nome:" onChange={(e) => handleInputChange(e, setName)}/>
+                        <Input icon={<PersonStanding size={20} />} placeholder="digite seu nome:" onChange={(e) => handleInputChange(e, setName)}/>
                         <p className="text-sm text-red-500 font-bold max-w-[300px]">{errorName}</p>
                     </div>
 
                     <div>
-                        <Input icon={<Shell size={20} />} label="Cpf:" placeholder="digite seu cpf" onChange={(e) => handleInputChange(e, setCpf)}/>                                
+                        <Input icon={<Shell size={20} />} placeholder="digite seu cpf" onChange={(e) => handleInputChange(e, setCpf)}/>                                
                         <p className="text-sm text-red-500 font-bold max-w-[300px]">{errorCPF}</p>
                     </div>
                     
                     <div>
-                        <Input icon={<Phone size={20} />} label="Telefone:" placeholder="digite seu telefone" onChange={(e) => handleInputChange(e, setPhone)}/>
+                        <Input icon={<Phone size={20} />} placeholder="digite seu telefone" onChange={(e) => handleInputChange(e, setPhone)}/>
                         <p className="text-sm text-red-500 font-bold max-w-[300px]">{errorPhone}</p>
                     </div>
 
                     <div>
-                        <Input icon={<Lock size={20} />} label="Senha:" placeholder="digite sua senha" type="password" onChange={(e) => handleInputChange(e, setPassword)}/>
+                        <Input icon={<Lock size={20} />} placeholder="digite sua senha" type="password" onChange={(e) => handleInputChange(e, setPassword)}/>
                         <p className="text-sm text-red-500 font-bold max-w-[300px]">{errorPassword}</p>
                     </div>
 
                     <div>
-                        <Input icon={<Lock size={20} />} label="Confirmar senha:" placeholder="confirme sua senha" type="password" onChange={(e) => handleInputChange(e, setConfirmarSenha)}/>
+                        <Input icon={<Lock size={20} />} placeholder="confirme sua senha" type="password" onChange={(e) => handleInputChange(e, setConfirmarSenha)}/>
                         <p className="text-sm text-red-500 font-bold max-w-[300px]">{errorConfirmarSenha}</p>
                     </div>
 
                     <Button 
-                        className=""
+                        className="bg-[#19a7ce] font-bold text-white w-40"
                         onClick={newUser}
                     >
                         Criar conta
                     </Button>
+
+                    {isMobile && (
+                        <div className="w-full text-center">
+                            <p>Já possui um conta?</p>
+                            <p className="underline" onClick={handleButtonClick}>clique aqui!</p>
+                        </div>
+                    )}
                 </div>
-                
-
-                <p className="text-sm">
-                    Já possui cadastro?  &nbsp; 
-                    <span 
-                        className="hover:underline cursor-pointer"
-                        onClick={() => router.push('/login')}
-                    > 
-                        Entrar
-                    </span>
-                </p>
-
             </form>
         </div>
     )   
 }
 
-export default RegisterPage;
+export default SignUp;

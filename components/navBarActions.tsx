@@ -37,7 +37,7 @@ const NavBarActions = () => {
     if (userData) {
       router.push('/profile');
     } else {
-      router.push('/login');
+      router.push('/sign');
     }
   };
 
@@ -45,7 +45,7 @@ const NavBarActions = () => {
     await localStorage.removeItem('user');
     setUser("Faça seu login ou cadastre-se!");
     removeAll();
-    router.push('/login');
+    router.push('/sign');
     toast.success('Logout foi realizado com sucesso');
   };
 
@@ -105,7 +105,7 @@ const NavBarActions = () => {
       </div>
 
       <Button
-        className="flex items-centerrounded-full bg-transparent px-3 lg:px-4 py-2 border border-white border-2"
+        className="flex items-centerrounded-full bg-transparent px-3 lg:px-4 py-2 border-white border-2"
         onClick={() => router.push('/cart')}
       >
         <ShoppingBag
