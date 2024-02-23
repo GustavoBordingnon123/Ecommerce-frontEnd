@@ -2,16 +2,17 @@
 
 import Button from "@/components/ui/Button";
 import useCart from "@/hooks/useCart";
-import { ShoppingBag, User } from "lucide-react";
+import { Search, ShoppingBag, User } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 
 const NavBarActions = () => {
+
   const router = useRouter();
   const cart = useCart();
   const removeAll = useCart((state) => state.removeAll);
-  
+
   const userData = typeof window !== 'undefined' ? localStorage.getItem('user') : null; 
 
   const [user, setUser] = useState("Faça seu login ou cadastre-se!");
@@ -75,6 +76,7 @@ const NavBarActions = () => {
 
   return (
     <div className='lg:ml-auto flex items-center gap-x-4'>
+
       <div className="flex justify-center items-center gap-1">
         <User
           size={32}

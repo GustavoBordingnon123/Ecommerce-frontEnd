@@ -6,6 +6,7 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import ModalProvider from '@/providers/modalProvider';
 import ToastProvider from '@/providers/toastProvider';
+import { SearchProvider } from '@/providers/SearchContext';
 
 const font = Urbanist({ subsets: ['latin'] })
 
@@ -24,12 +25,15 @@ export default function RootLayout({
       <body className={font.className}>
         <ModalProvider />
         <ToastProvider />
-        <Navbar />
+        <SearchProvider>
+          <Navbar />
 
-        <main className='pt-12'>
-          {children}
-        </main>
-        
+          <main className='pt-12'>
+            {children}
+          </main>
+        </SearchProvider>
+       
+      
         <Footer />
       </body>
     </html>
