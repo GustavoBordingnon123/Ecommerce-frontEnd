@@ -24,7 +24,7 @@ const filteredBooks: React.FC<ProductListProps> = ({ items }) => {
   );
 
   return (
-    <div className="space-y-4 h-min-screen">
+    <div className="space-y-4 min-h-screen">
       <h3 className="font-bold text-3xl w-full text-center mt-20">Livros encontrados</h3>
       {filteredItems.length === 0 && <NoResults />}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
