@@ -30,7 +30,12 @@ const SignPage = () => {
     setButtonTexts(isSignUp);
   }, [isSignUp, controlsOverlay, controlsSign]);
 
-  const isMobile = matchMedia('(max-width: 768px)').matches;
+  let isMobile = false;
+  try {
+    isMobile = matchMedia('(max-width: 768px)').matches;
+  } catch (error) {
+    console.error('matchMedia is not supported');
+  }
 
   return (
     <div className='h-screen w-full flex justify-center items-center'>
