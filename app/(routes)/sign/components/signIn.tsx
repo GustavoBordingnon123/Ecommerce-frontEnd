@@ -11,7 +11,7 @@ import useSign from "@/hooks/useSign";
 
 const SignIn = () => {
   const router = useRouter();
-  const isMobile = window.innerWidth <= 768; // Defina o breakpoint para dispositivos móveis
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
   const imageUrl = "/resources/images/bookGif.gif";
   const [email, setEmail] = useState("none");

@@ -18,7 +18,7 @@ const SignUp = () => {
 
     const router = useRouter();
     const [isMounted, setIsMounted] = useState(false);
-    const isMobile = window.innerWidth <= 768; // Defina o breakpoint para dispositivos móveis
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
