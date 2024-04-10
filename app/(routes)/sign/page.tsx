@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import SignUp from './components/signUp';
@@ -14,24 +12,24 @@ const SignPage = () => {
 
   useEffect(() => {
     function setButtonTexts(isSignUp: boolean) {
-      const isMobile = window.innerWidth <= 768; // Defina o breakpoint para dispositivos móveis
+      if (typeof window !== 'undefined') {
+        const isMobile = window.innerWidth <= 768; // Defina o breakpoint para dispositivos móveis
 
-      if (!isMobile) {
-        if (isSignUp) {
-          // Reset para a posição original
-          controlsOverlay.start({ x: 0 }, { duration: 0.8 });
-          controlsSign.start({ x: 0 }, { duration: 0.8 });
-        } else {
-          // Movimenta para a esquerda ou direita
-          controlsOverlay.start({ x: isSignUp ? '-100%' : '100%' }, { duration: 0.8 });
-          controlsSign.start({ x: isSignUp ? '100%' : '-100%' }, { duration: 0.8 });
+        if (!isMobile) {
+          if (isSignUp) {
+            // Reset para a posição original
+            controlsOverlay.start({ x: 0 }, { duration: 0.8 });
+            controlsSign.start({ x: 0 }, { duration: 0.8 });
+          } else {
+            // Movimenta para a esquerda ou direita
+            controlsOverlay.start({ x: isSignUp ? '-100%' : '100%' }, { duration: 0.8 });
+            controlsSign.start({ x: isSignUp ? '100%' : '-100%' }, { duration: 0.8 });
+          }
         }
       }
     }
 
-    if (typeof window !== 'undefined') {
-      setButtonTexts(isSignUp);
-    }
+    setButtonTexts(isSignUp);
   }, [isSignUp, controlsOverlay]);
 
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
