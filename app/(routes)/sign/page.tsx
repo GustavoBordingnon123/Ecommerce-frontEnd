@@ -14,27 +14,23 @@ const SignPage = () => {
 
   useEffect(() => {
     function setButtonTexts(isSignUp: boolean) {
-      if (typeof window !== 'undefined') {
-        const isMobile = window.innerWidth <= 768; // Defina o breakpoint para dispositivos móveis
-
-        if (!isMobile) {
-          if (isSignUp) {
-            // Reset para a posição original
-            controlsOverlay.start({ x: 0 }, { duration: 0.8 });
-            controlsSign.start({ x: 0 }, { duration: 0.8 });
-          } else {
-            // Movimenta para a esquerda ou direita
-            controlsOverlay.start({ x: isSignUp ? '-100%' : '100%' }, { duration: 0.8 });
-            controlsSign.start({ x: isSignUp ? '100%' : '-100%' }, { duration: 0.8 });
-          }
+      if (!isMobile) {
+        if (isSignUp) {
+          // Reset para a posição original
+          controlsOverlay.start({ x: 0 }, { duration: 0.8 });
+          controlsSign.start({ x: 0 }, { duration: 0.8 });
+        } else {
+          // Movimenta para a esquerda ou direita
+          controlsOverlay.start({ x: isSignUp ? '-100%' : '100%' }, { duration: 0.8 });
+          controlsSign.start({ x: isSignUp ? '100%' : '-100%' }, { duration: 0.8 });
         }
       }
     }
 
     setButtonTexts(isSignUp);
-  }, [isSignUp, controlsOverlay]);
+  }, [isSignUp, controlsOverlay, controlsSign]);
 
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const isMobile = matchMedia('(max-width: 768px)').matches;
 
   return (
     <div className='h-screen w-full flex justify-center items-center'>
