@@ -29,10 +29,12 @@ const SignPage = () => {
       }
     }
 
-    setButtonTexts(isSignUp);
+    if (typeof window !== 'undefined') {
+      setButtonTexts(isSignUp);
+    }
   }, [isSignUp, controlsOverlay]);
 
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
   return (
     <div className='h-screen w-full flex justify-center items-center'>
