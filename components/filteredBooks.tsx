@@ -10,7 +10,7 @@ interface ProductListProps {
   items: Product[];
 }
 
-const filteredBooks: React.FC<ProductListProps> = ({ items }) => {
+const FilteredBooks: React.FC<ProductListProps> = ({ items }) => {
   const { inputValue } = useSearchProvider();
 
   // Verifica se inputValue é uma string vazia, nula ou indefinida
@@ -39,4 +39,4 @@ const filteredBooks: React.FC<ProductListProps> = ({ items }) => {
 };
 
 
-export default filteredBooks;
+export default FilteredBooks;
